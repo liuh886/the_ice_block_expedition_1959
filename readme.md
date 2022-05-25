@@ -8,19 +8,25 @@ A million tons of ice was shipped from Norway each year during the golden age of
 
 Steps:
 
-1. Read the story: [Ice block expedition of 1959 - Wikipedia](https://en.wikipedia.org/wiki/Ice_block_expedition_of_1959)
-2. Generate kml by google map according to the story. -> eu.kml
+1. Read the story line by line: [Ice block expedition of 1959 - Wikipedia](https://en.wikipedia.org/wiki/Ice_block_expedition_of_1959)
+2. Generate .kml by google map according to the story. -> eu.kml
 3. Parse kml files to files: date, time, lat, lon. -> eu_timeseries.csv
 4. Download climate replay dataset from [ERA5-Land hourly data from 1950 to present (copernicus.eu)](https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-land?tab=overview), -> .NetCDF.
    1. Sub_region extraction: North 67, South -2, West 0, East 15.
    2. Variables: 2m dew temp, 2m temp, ski temp, surface sensible heat flux, surface latent heat flux, surface thermal radiation downwards, surface solar radiation downwards, 10m u-component of wind, 10m v-component of wind, surface pressure, total precipitation.
    3. Month: Feb, Mar. Days: all, Time: all.
 5. Couple 3&4 to generate 1d weather condition dataset (just variables and timeseries). -> 1d_1959.csv
-   1. turn accumulative value into hours discrete value. interpolation needs some times.
+   1. turn accumulative value into hours discrete value. Interpolation needed some times.
 6. Start modeling by energy balance equations parts -> 1D model
-   1. turn wind from 10 to 2, and calculate relative wind speed at 2m.
+   1. turn wind from 10 m to 2 m, and calculate relative wind speed at 2 m.
+   1. energy balance on the box surface. and heat transfer = melt energy -> mass loss
 7. Heat equations parts. -> 2D or 3D model
+   1. answering how the ice block is warming up, and ripe out.
+
 8. Discussion.
+   1. 1959 vs 2020, 2021
+   2. how the covering and insulation prevent ice from melting.
+
 
 Three script were used in this project:
 
@@ -54,6 +60,14 @@ The requirements:
 
 
 ### Results
+
+This study reproduced the ice block expedition 1959 in multiple scenarios using surface energy balance models and heat equation model. The results include (1) how the ice would melt without the cover and insulation. (2) The influence of box material and insulation material. (3) how long do the warming up and ripe phase take. The study compared between simulation 1959, 2021. If there are only bare ice, the 2021 would be the first to melt away, and the 1959 would survive 2 more days. If there is covering and insulation, the 1959 lost even more. This is because the melting mechanism behaves differently on the ice surface and the cover surface.
+
+There are some results that are very close the original records. The simulations shows that only about 3 cm thick, or 348.8 Kg to 352.3 Kg of the ice block melted. The heat equation simulation revealed temperature distribution of ice inside the box. The ice block takes 175 hours warming up from -6° to 0° in the expedition.
+
+Transporting ice to the tropics in the 19th century was totally manageable business. Using a white-covered wooden box filled with double thickness is able to achieve the same insulation effect as glass wool, which is fully expected by simulations. We can use the ice block expedition of 1959 as a baseline. If we do an expedition again, the melt loss of transporting ice is not expected over than 1959. And, the simulations do not support blaming it to climate change because there is a covering upon ice.
+
+More result in juypter notebook.
 
 
 
