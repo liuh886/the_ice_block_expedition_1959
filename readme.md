@@ -28,6 +28,10 @@ Three script were used in this project:
 - read_grib: step 5
 - main: step 6&7
 
+The requirements:
+- numpy, pandas
+- [process kml] geopandas, shapely
+- [heat equations] numba, scipy
 
 
 ### Settings:
