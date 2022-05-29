@@ -8,14 +8,14 @@ A million tons of ice was shipped from Norway each year during the golden age of
 
 Steps:
 
-1. Read the story line by line: [Ice block expedition of 1959 - Wikipedia](https://en.wikipedia.org/wiki/Ice_block_expedition_of_1959)
+1. Read the story line by line: [Ice block expedition of 1959 - Wikipedia](https://en.wikipedia.org/wiki/Ice_block_expedition_of_1959), [«Isblokkekspedisjonen» 1959 ~ Arkitektur  & Miljøteknologi (arkitekturnytt.no)](http://www.arkitekturnytt.no/2017/10/isblokkekspedisjonen-1959.html)
 2. Generate .kml by google map according to the story. -> eu.kml
 3. Parse kml files to files: date, time, lat, lon. -> eu_timeseries.csv
 4. Download climate replay dataset from [ERA5-Land hourly data from 1950 to present (copernicus.eu)](https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-land?tab=overview), -> .NetCDF.
    1. Sub_region extraction: North 67, South -2, West 0, East 15.
    2. Variables: 2m dew temp, 2m temp, ski temp, surface sensible heat flux, surface latent heat flux, surface thermal radiation downwards, surface solar radiation downwards, 10m u-component of wind, 10m v-component of wind, surface pressure, total precipitation.
    3. Month: Feb, Mar. Days: all, Time: all.
-5. Couple 3&4 to generate 1d weather condition dataset (just variables and timeseries). -> 1d_1959.csv
+5. Couple 3&4 to generate 1D weather condition dataset (just variables and timeseries). -> 1d_1959.csv
    1. turn accumulative value into hours discrete value. Interpolation needed some times.
 6. Start modeling by energy balance equations parts -> 1D model
    1. turn wind from 10 m to 2 m, and calculate relative wind speed at 2 m.
